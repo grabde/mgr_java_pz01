@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/intruduction-app2/intruduction-app/intruduction-app.iml" filepath="$PROJECT_DIR$/intruduction-app2/intruduction-app/intruduction-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/intruduction-app2.iml" filepath="$PROJECT_DIR$/.idea/intruduction-app2.iml" />
+    </modules>
+  </component>
+</project>

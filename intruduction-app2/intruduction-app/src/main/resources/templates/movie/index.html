@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/main_layout.html}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="pl">
+<div layout:fragment="content">
+  <h1 class="text-center mt-3">Lista filmów</h1>
+  <hr/>
+  <div class="row mt-1">
+    <div class="col-12 text-right">
+      <a class="btn btn-primary" href="/movie/new">+ Nowy film</a>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Tytuł</th>
+          <th>Rok wydania</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="movie : ${listMovies}">
+          <td th:text="${movie.id}">Id</td>
+          <td th:text="${movie.title}">Tytuł</td>
+          <td th:text="${movie.releaseYear}">Rok wydania</td>
+          <td>
+            <a class="btn btn-sm btn-secondary"
+               th:href="@{'/movie/edit/' + ${movie.id}}">Edytuj</a>
+            &nbsp;&nbsp;&nbsp;
+            <a class="btn btn-sm btn-danger"
+               th:href="@{'/movie/delete/' + ${movie.id}}">Usuń</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</html>
