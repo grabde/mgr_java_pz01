@@ -7,7 +7,11 @@ import pl.wsb.students.intruductionapp.repository.ActorRepository;
 import javax.transaction.Transactional;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 
 @Service
 @Transactional
@@ -40,5 +44,11 @@ public class ActorService {
     {
         actorRepository.deleteById(id);
     }
-
+    public Iterable<Actor> listToday()
+    {
+        LocalDate v_ldate = java.time.LocalDate.now();
+        String v_sldate = v_ldate.toString();
+        Iterable<Actor> actors = actorRepository.find_today(v_sldate);
+        return actors;
+    }
 }

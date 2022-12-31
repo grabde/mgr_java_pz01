@@ -33,16 +33,6 @@ public class ActorController {
     @PostMapping("/save")
     public String saveActor(@ModelAttribute("actor") Actor actor)
     {
-        String sdate = String.valueOf(actor.getTermin());
-        String stermin = sdate.substring(0, 8);
-        stermin = stermin + " 00:00:00";
-        DateFormat formatter = DateFormat.getDateInstance();
-        try {
-            Date termin = formatter.parse(stermin);
-            actor.setTermin(termin);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
         actorService.save(actor);
         return "redirect:/actor/";
     }
@@ -58,5 +48,11 @@ public class ActorController {
     {
         actorService.delete(id);
         return "redirect:/actor/";
+    }
+    @GetMapping("/today")
+    public String today(Model model)
+    {
+        model.addAttribute("listActors", actorService.listToday());
+        return "actor/index";
     }
 }

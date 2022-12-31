@@ -10,7 +10,7 @@ public class Actor {
     private Date created;
     private Date modified;
     private String zadanie;
-    private Date termin;
+    private String termin;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,13 +50,13 @@ public class Actor {
         this.zadanie = zadanie;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "termin", length = 19, nullable = false)
-    public Date getTermin() {
+
+    @Column(name = "termin", length = 10, nullable = false)
+    public String getTermin() {
         return termin;
     }
 
-    public void setTermin(Date termin) {
+    public void setTermin(String termin) {
         this.termin = termin;
     }
 }

@@ -13,13 +13,13 @@ public interface ActorMapper {
     @Mappings({
             @Mapping(target="id", source="id"),
             @Mapping(target="zadanie", source="zadanie"),
-            @Mapping(target="termin", source="termin")
+            @Mapping(target="termin", source="termin", dateFormat = "dd.MM.yyyy")
     })
     ActorDTO actorToActorDTO(Actor entity);
     @Mappings({
             @Mapping(target="id", source="id"),
             @Mapping(target="zadanie", source="zadanie"),
-            @Mapping(target="termin", source="termin")
+            @Mapping(target="termin", source="termin", dateFormat = "dd.MM.yyyy")
     })
     Actor actorDTOToActor(ActorDTO dto);
     List<ActorDTO> map(Iterable<Actor> actors);

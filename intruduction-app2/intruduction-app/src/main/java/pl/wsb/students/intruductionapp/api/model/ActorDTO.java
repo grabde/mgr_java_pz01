@@ -10,7 +10,7 @@ public class ActorDTO {
     @JsonProperty("zadanie")
     private String zadanie;
     @JsonProperty("termin")
-    private Date termin;
+    private String termin;
 
     @JsonProperty("id")
     public String getId() {
@@ -27,11 +27,9 @@ public class ActorDTO {
         this.zadanie = zadanie;
     }
     @JsonProperty("termin")
-    public Date getTermin() {
-        return termin;
-    }
+    public String getTermin() { return termin; }
     @JsonProperty("termin")
-    public void setTermin(Date termin) {
+    public void setTermin(String termin) {
         this.termin = termin;
     }
 }
