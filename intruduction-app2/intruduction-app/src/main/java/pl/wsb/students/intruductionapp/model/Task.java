@@ -4,13 +4,23 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "actor")
-public class Actor {
+@Table(name = "task")
+public class Task {
     private Integer id;
     private Date created;
     private Date modified;
     private String zadanie;
     private String termin;
+
+    public Task() {
+    }
+    public Task(Integer id, Date created, Date modified, String zadanie, String termin ) {
+        this.id = id;
+        this.created = created;
+        this.modified = modified;
+        this.zadanie = zadanie;
+        this.termin = termin;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

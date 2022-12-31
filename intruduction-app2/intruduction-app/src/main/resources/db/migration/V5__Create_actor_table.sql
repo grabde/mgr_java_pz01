@@ -1,1 +1,0 @@
-alter table actor MODIFY termin varchar(10);

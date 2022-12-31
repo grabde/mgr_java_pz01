@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import pl.wsb.students.intruductionapp.model.Movie;
-import pl.wsb.students.intruductionapp.repository.MovieRepository;
+import pl.wsb.students.intruductionapp.model.Task;
+import pl.wsb.students.intruductionapp.repository.TaskRepository;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -16,57 +16,55 @@ import java.util.stream.StreamSupport;
 import static org.mockito.Mockito.doReturn;
 
 @SpringBootTest
-public class MovieServiceTest {
+public class TaskServiceTest {
     @Autowired
-    private MovieService movieService;
+    private TaskService taskService;
     @MockBean
-    private MovieRepository repository;
+    private TaskRepository repository;
     @Test
     void listAll_whenFound_thenReturnResult() {
 // Setup our mock repository
-        Movie movie = new Movie(1,
+        Task task1 = new Task(
+                1,
                 new Date(),
                 new Date(),
-                "Tytuł filmu",
-                "2020",
-                null
+                "Zadanie 1",
+                "2023-01-01"
         );
-        Movie movie2 = new Movie(
-                2,
+        Task task2 = new Task(
+                1,
                 new Date(),
                 new Date(),
-                "Tytuł drugiego filmu",
-                "2020",
-                null
+                "Zadanie 2",
+                "2023-01-01"
         );
-        doReturn(Arrays.asList(movie, movie2)).when(repository).findAll();
-        Iterable<Movie> movies = movieService.listAll();
+        doReturn(Arrays.asList(task1, task2)).when(repository).findAll();
+        Iterable<Task> movies = taskService.listAll();
         Assertions.assertEquals(2, StreamSupport.stream(movies.spliterator(), false).count());
     }
     @Test
     void find_whenFound_thenReturnResult() {
 // Setup our mock repository
-        Movie movie = new Movie(
+        Task task2 = new Task(
                 1,
                 new Date(),
                 new Date(),
-                "Tytuł filmu",
-                "2020",
-                null
+                "Zadanie 2",
+                "2023-01-01"
         );
-        doReturn(Optional.of(movie)).when(repository).findById(1);
+        doReturn(Optional.of(task2)).when(repository).findById(1);
 // Execute the service call
-        Movie result = movieService.find(1);
+        Task result = taskService.find(1);
 // Assert the response
         Assertions.assertTrue((result != null) );
-        Assertions.assertSame(result, movie);
+        Assertions.assertSame(result, task2);
     }
     @Test
     void find_whenNotFound_thenReturnNull() {
 // Setup our mock repository
         doReturn(Optional.empty()).when(repository).findById(1);
 // Execute the service call
-        Movie result = movieService.find(1);
+        Task result = taskService.find(1);
 // Assert the response
         Assertions.assertTrue((result == null) );
     }

@@ -9,8 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import pl.wsb.students.intruductionapp.model.Movie;
-import pl.wsb.students.intruductionapp.service.MovieService;
+import pl.wsb.students.intruductionapp.model.Task;
+import pl.wsb.students.intruductionapp.service.TaskService;
 
 import java.util.Date;
 
@@ -20,39 +20,37 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class MovieControllerTest {
+class TaskControllerTest {
     @MockBean
-    private MovieService service;
+    private TaskService service;
     @Autowired
     private MockMvc mockMvc;@Test
     void index() throws Exception {
 // Setup our mocked service
-        Movie movie = new Movie(
+        Task task1 = new Task(
                 1,
                 new Date(),
                 new Date(),
-                "Tytuł filmu",
-                "2020",
-                null
+                "Zadanie 1",
+                "2023-01-01"
         );
-        Movie movie2 = new Movie(
-                2,
+        Task task2 = new Task(
+                1,
                 new Date(),
                 new Date(),
-                "Tytuł drugiego filmu",
-                "2020",
-                null
+                "Zadanie 2",
+                "2023-01-01"
         );
-        doReturn(Lists.newArrayList(movie, movie2)).when(service).listAll();
+        doReturn(Lists.newArrayList(task1, task2)).when(service).listAll();
 // Execute the GET request
-        mockMvc.perform(get("/movie/"))
+        mockMvc.perform(get("/task/"))
 // Validate the response code and content type
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("text/html;charset=UTF-8"))
 // Validate view
-                .andExpect(view().name("movie/index"))
+                .andExpect(view().name("task/index"))
 // Validate content
-                .andExpect(content().string(Matchers.containsString("Tytuł filmu"))).andExpect(content().string(Matchers.containsString("2020")))
+                .andExpect(content().string(Matchers.containsString("Zadanie 2"))).andExpect(content().string(Matchers.containsString("2023-01-01")))
 //Print
                 .andDo(MockMvcResultHandlers.print());
     }

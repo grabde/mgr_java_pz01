@@ -5,26 +5,21 @@
       xmlns:th="http://www.thymeleaf.org"
       lang="pl">
 <div layout:fragment="content">
-  <h1 class="text-center mt-3">Edycja zadania</h1>
+  <h1 class="text-center mt-3">Nowe zadanie</h1>
   <hr/>
   <div class="row mt-1">
     <div class="col-12">
-      <form action="#" th:action="@{/actor/save}" th:object="${actor}"
+      <form action="#" th:action="@{/task/save}" th:object="${task}"
             method="post">
         <div class="form-group">
-          <label for="actor-id">Id</label>
-          <input class="form-control" type="text" th:field="*{id}"
-                 readonly="readonly" id="actor-id" />
-        </div>
-        <div class="form-group">
-          <label for="actor-zadanie">Imię</label>
+          <label for="task-zadanie">Zadanie</label>
           <input class="form-control" type="text"
-                 th:field="*{zadanie}" id="actor-zadanie" />
+                 th:field="*{zadanie}" id="task-zadanie" />
         </div>
         <div class="form-group">
-          <label for="actor-termin">Termin</label>
+          <label for="task-termin">Termin</label>
           <input class="form-control" type="date" th:field="*{termin}"
-                 id="actor-termin" />
+                 id="task-termin" />
         </div>
         <button type="submit" class="btn btn-primary mb-2 text-right">
           Zapisz

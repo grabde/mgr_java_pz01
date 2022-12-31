@@ -9,7 +9,7 @@
   <hr/>
   <div class="row mt-1">
     <div class="col-12 text-right">
-      <a class="btn btn-primary" href="/actor/new">+ Nowe zadanie</a>
+      <a class="btn btn-primary" href="/task/new">+ Nowe zadanie</a>
     </div>
   </div>
   <div class="row mt-4">
@@ -24,16 +24,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="actor : ${listActors}">
-          <td th:text="${actor.id}">Id</td>
-          <td th:text="${actor.zadanie}">Zadanie</td>
-          <td th:text="${actor.termin}">Termin</td>
+        <tr th:each="task : ${listTasks}">
+          <td th:text="${task.id}">Id</td>
+          <td th:text="${task.zadanie}">Zadanie</td>
+          <td th:text="${task.termin}">Termin</td>
           <td>
             <a class="btn btn-sm btn-secondary"
-               th:href="@{'/actor/edit/' + ${actor.id}}">Edytuj</a>
+               th:href="@{'/task/edit/' + ${task.id}}">Edytuj</a>
             &nbsp;&nbsp;&nbsp;
             <a class="btn btn-sm btn-danger"
-               th:href="@{'/actor/delete/' + ${actor.id}}">Usuń</a>
+               th:href="@{'/task/delete/' + ${task.id}}">Usuń</a>
           </td>
         </tr>
         </tbody>
